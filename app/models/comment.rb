@@ -1,9 +1,6 @@
 class Comment < ActiveRecord::Base
-  belongs_to :post
-  belongs_to :user
-  validates :body, presence: :true
+  include Authorable
 
-  def author?(current_user)
-    user == current_user
-  end
+  belongs_to :post
+  validates :body, presence: :true
 end
