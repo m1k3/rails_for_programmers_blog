@@ -3,7 +3,10 @@
 <% @posts.each do |post| %>
   <h2><%= link_to post.title, post %></h2>
   <p><%= post.body %></p>
-  <p><%= l post.created_at, format: :short %></p>
+  <p>
+    <%= l post.created_at, format: :short %>
+    <%= link_to 'Edit', edit_post_path(post) %>
+  </p>
   <hr />
 <% end %>
 
