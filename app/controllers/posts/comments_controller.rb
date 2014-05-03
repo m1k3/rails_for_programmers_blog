@@ -3,7 +3,7 @@ class Posts::CommentsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @comment = @post.comments.build(comment_params)
+    @comment = @post.comments.build(comment_params.merge(user: current_user))
 
     if @comment.save
       flash[:notice] = 'Comment added.'

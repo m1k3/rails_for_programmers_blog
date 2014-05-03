@@ -17,7 +17,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = Post.new(post_params.merge(user: current_user))
 
     respond_to do |format|
       if @post.save
@@ -32,7 +32,7 @@ class PostsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @post.update(post_params)
+      if @post.update(post_params.merge(user: current_user))
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
       else
