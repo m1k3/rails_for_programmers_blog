@@ -9,14 +9,9 @@
     <li>
       <%= comment.body %>
       (<%= comment.user.email %>)
+      <%= link_to 'Edit', edit_post_comment_path(@post, comment) if comment.author?(current_user) %>
     </li>
   <% end %>
 </ul>
 
-<%= form_for [@post, @comment||Comment.new] do |f| %>
-  <%= f.label :body, 'Comment' %>
-  <%= f.text_area :body %>
-
-  <br/>
-  <%= f.submit %>
-<% end %>
+<%= render 'posts/comments/form' %>
