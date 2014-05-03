@@ -15,7 +15,7 @@ class Posts::CommentsController < ApplicationController
 
   private
     def set_post
-      @post = Post.find(params[:post_id])
+      @post = current_user.posts.find(params[:post_id])
     end
 
     def comment_params
