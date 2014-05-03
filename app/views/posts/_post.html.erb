@@ -2,6 +2,6 @@
 <p><%= post.body %></p>
 <p>
   <%= l post.created_at, format: :short %>
-  <%= link_to 'Edit', edit_post_path(post) %>
+  <%= link_to 'Edit', edit_post_path(post) if post.author?(current_user) %>
 </p>
 <hr />
