@@ -10,6 +10,7 @@
     <li><%= comment.body %></li>
   <% end %>
 </ul>
+
 <%= form_for [@post, @comment||Comment.new] do |f| %>
   <%= f.label :body, 'Comment' %>
   <%= f.text_area :body %>

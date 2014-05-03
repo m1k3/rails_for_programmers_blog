@@ -5,10 +5,11 @@ class Posts::CommentsController < ApplicationController
     @comment = @post.comments.build(comment_params)
 
     if @comment.save
-      redirect_to @post, notice: 'Comment added.'
+      flash[:notice] = 'Comment added.'
     else
-      render 'posts/show'
+      flash[:notice] = 'There is something wrong. Please check your comment.'
     end
+      redirect_to @post
   end
 
   private
