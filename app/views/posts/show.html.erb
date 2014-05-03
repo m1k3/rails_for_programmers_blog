@@ -6,7 +6,10 @@
 
 <ul>
   <% @post.comments.each do |comment| %>
-    <li><%= comment.body %></li>
+    <li>
+      <%= comment.body %>
+      (<%= comment.user.email %>)
+    </li>
   <% end %>
 </ul>
 
